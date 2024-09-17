@@ -1,0 +1,343 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    color: var(--dark);
+}
+
+/* Varoable css */
+
+:root {
+    --theme-pink: #D43993;
+    --theme-orange: #F8BE52;
+    --theme-green: #556541;
+    --theme-muted: #A7A57F;
+    --theme-light-green: #EBF1E3;
+    --footer-text: #FFFBF7;
+    --quotes-bg: #556541;
+    --footer-bg: #192314;
+    --dark: #393939;
+    --white: #FFFFFF;
+}
+
+/* Typography */
+
+.fw_500 {
+    font-weight: 500;
+}
+
+.fw_600 {
+    font-weight: 600;
+}
+
+.fw_700 {
+    font-weight: 700;
+}
+
+/* Buttons */
+
+.btn {
+    transition: .3s all;
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 50px;
+    border-radius: 2px;
+    padding: 0 1.5rem;
+}
+
+.btn img {
+    transform: translateX(3px);
+    transition: .3s all;
+}
+
+.btn:hover,
+.btn:focus {
+    color: var(--dark);
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn:hover img,
+.btn:focus img {
+    transform: translateX(8px);
+}
+
+.btn-lg {
+    font-size: 18px;
+}
+
+.btn-orange {
+    color: var(--dark);
+    background-color: var(--theme-orange);
+    border-color: var(--theme-orange);
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--theme-green);
+    border-color: var(--theme-green);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    color: var(--white);
+    background-color: var(--theme-green);
+    border-color: var(--theme-green); 
+}
+
+/* Header */
+
+
+.brand-logo img {
+    height: auto;
+    width: 150px;
+}
+
+.dm-serif {
+    font-family: "DM Serif Display", serif;
+    font-weight: inherit;
+}
+
+header {
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+    position: relative;
+    z-index: 2;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8505996148459384) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+/* Features */
+
+.feature_list ul {
+    padding: 0;
+    margin: 0;
+}
+
+.feature_list ul li {
+    margin-bottom: 1rem;
+    list-style: none;
+    background: url(../images/star.svg) 0 1px no-repeat;
+    padding-left: 1.75rem;
+}
+
+.feature_list ul li:last-child {
+    margin-bottom: 0;
+}
+
+.feature_list ul li p {
+    font-size: 1.15rem;
+}
+
+.feature_list ul li span {
+    font-weight: 500;
+}
+
+/* Misc. */
+
+.bg_light_green {
+    background-color: var(--theme-light-green);
+}
+
+.features-carousel figure img {
+    height: 140px;
+    width: auto;
+}
+
+.features-carousel figure figcaption {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.features-carousel figure figcaption {
+    text-transform: capitalize;
+}
+
+.values {
+    background: url(../images/value-bg.svg) no-repeat;
+    background-color: var(--theme-light-green);
+    background-position: center top;
+    background-size: contain;
+    padding: 20rem 0;
+}
+
+ul.value_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.value_list li {
+    background: url(../images/value-star.svg) center left no-repeat;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-left: 2.25rem;
+}
+
+ul.value_list li:last-child {
+    margin-bottom: 0;
+}
+
+.quotes_block {
+    background-color: var(--quotes-bg);
+}
+
+.quotes_block p {
+    font-weight: 600;
+    font-size: 1.55rem;
+    color: var(--footer-text);
+}
+
+.quotes_block .owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+/* Owl Settings */
+
+.owl-theme .owl-dots .owl-dot span {
+    background: var(--quotes-bg);
+    border: 1px solid var(--white);
+    margin: 5px 5px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: var(--white);
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 30px;
+}
+
+/* Footer */
+
+footer {
+    background: url(../images/footer-bg.svg) no-repeat;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    background-position: center bottom;
+    background-size: contain;
+    padding-bottom: 3rem;
+}
+
+footer h1 {
+    text-transform: capitalize;
+}
+
+footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+}
+
+footer ul li {
+    margin-right: .75rem;
+}
+
+footer hr {
+    border-color: #3F4A31;
+}
+
+footer .form-control {
+    background: var(--footer-bg);
+    border: 1px solid var(--theme-muted);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    height: 52px;
+    color: var(--footer-text);
+}
+
+footer .form-control:focus {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    border-color: var(--quotes-bg);
+    box-shadow: none;
+    outline: 0;
+}
+
+footer .form-control::placeholder {
+    color: var(--theme-muted);
+}
+
+.text-muted {
+    color: var(--theme-muted) !important;
+}
+
+.form-text {
+    font-size: .70rem;
+}
+
+footer .quick_contact {
+    color: var(--footer-text);
+}
+
+footer .copyright {
+    font-size: 14px;
+}
+
+footer .copyright a {
+    color: var(--footer-text);
+}
+
+footer .copyright a:hover,
+footer .copyright a:focus {
+    color: var(--theme-orange);
+    text-decoration: none;
+}
+
+/* Responsive */
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .display-3 {
+        font-size: 3rem;
+    }
+}
+
+.highlight {
+    font-weight: bolder;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Ensures the word fades out and fades in smoothly */
+.hidden {
+    opacity: 0;
+}
