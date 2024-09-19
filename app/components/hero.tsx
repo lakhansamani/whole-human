@@ -60,7 +60,13 @@ const HeroSection = () => {
       {/* Semi-transparent overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center h-full text-center text-app-off-white py-10'>
-        <Image src={logoURL} alt='Whole Human Logo' height={200} width={200} className="mb-10" />
+        <Image
+          src={logoURL}
+          alt='Whole Human Logo'
+          height={200}
+          width={200}
+          className='mb-10'
+        />
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
           Whole human is your home away from home.
@@ -103,14 +109,13 @@ const HeroSection = () => {
                 </DialogTitle>
                 <Description>
                   <iframe
-                    width='560'
                     height='315'
                     src='https://www.youtube.com/embed/E36_MJBoVMM?si=0WuuyYkuGjmQ_Clh'
                     title='YouTube video player'
                     frameBorder='0'
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     referrerPolicy='strict-origin-when-cross-origin'
-                    className='rounded-md'
+                    className='rounded-md md:w-[560px]'
                     allowFullScreen
                   ></iframe>
                 </Description>
