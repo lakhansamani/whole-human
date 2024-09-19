@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-app-off-white {
+  background-color: #dacdb9;
+}
+
+.text-app-off-white {
+  color: #dacdb9;
+}
+
+.bg-app-leaves {
+  background: url(/assets/images/leaves.svg) no-repeat;
+  background-color: #ebf1e3;
+  background-position: center top;
+  background-size: contain;
+  padding-top: 10rem;
+  padding-bottom: 3rem;
+}
+
+.footer {
+  background: url(/assets/images/footer-bg.svg) no-repeat;
+  background-color: #192314;
+  color: white;
+  background-position: center bottom;
+  background-size: contain;
+  padding-bottom: 3rem;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

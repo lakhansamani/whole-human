@@ -1,5 +1,6 @@
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import Footer from './components/footer';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
         />
         <meta name='author' content='Whole Human' />
         <meta name='robots' content='index, follow' />
-        <link rel='icon' href='/assets/images/favicon.ico' sizes='any' />
+        <link rel='icon' href='/assets/images/favicon.png' sizes='any' />
         <meta
           property='og:title'
           content='Whole Human - Holistic Wellbeing & Growth'
@@ -45,9 +46,12 @@ export default function RootLayout({
           name='twitter:description'
           content='Join us in promoting holistic wellbeing, sustainability, inclusion, equality, and personal growth.'
         />
-        <meta name='twitter:image' content='/path-to-your-image.jpg' />
+        <meta name='twitter:image' content='/assets/images/logo.png' />
       </head>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         brandGreen: '#556541',
         brandYellow: '#F8BE52',
-        brandLightGreen: '#A7A57F',
+        brandLightGreen: '#EBF1E3',
         brandBackground: '#DACD9',
         // Add other colors based on the palette provided
       },
