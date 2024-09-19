@@ -24,22 +24,23 @@ const values = [
   'Free',
   'Full',
   'Fun',
+  'WHOLE',
 ];
 
 const logoURL = '/assets/images/wh-h-logo.svg';
 const videoURL = '/assets/videos/forest.mp4';
-const instagramIcon = '/assets/images/instagram.svg';
-// const audioURL = '/assets/audios/hero-audio.mp3';
-const instagramURL = 'https://www.instagram.com/wholehumanpodcast/';
 
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   useEffect(() => {
+    // for every 2 seconds, change the index
+    // if the index is the last value, set the font weight to bold
+    // if the index is the last value, change after 10 seconds
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % values.length);
-    }, 2000); // Change the value every 2 seconds
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -72,7 +73,7 @@ const HeroSection = () => {
           Whole human is your home away from home.
         </div> */}
         <div className='flex flex-col items-center mt-18 md:flex-row'>
-          <h1 className='font-semibold text-white text-5xl md:pr-3 md:text-6xl pb-2 md:mt-0'>
+          <h1 className='font-semibold text-white text-5xl md:pr-3 md:text-7xl pb-2 md:mt-0'>
             LIVE
           </h1>
           {/* framer motion to fade in */}
@@ -82,13 +83,10 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className='text-5xl font-medium md:text-6xl pb-2 md:mt-0'
+            className={`text-5xl font-medium md:text-7xl pb-2 md:mt-0 ${index === values.length - 1 ? 'font-semibold text-white' : 'font-medium'}`}
           >
             {values[index]}
           </motion.h1>
-          <h1 className='font-semibold text-white text-5xl md:pl-3 md:text-6xl'>
-            WHOLE
-          </h1>
         </div>
 
         {isVideoModalOpen && (
