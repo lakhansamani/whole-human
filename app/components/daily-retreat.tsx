@@ -140,16 +140,16 @@ const DailyRetreat = () => {
   };
 
   return (
-    <div className='bg-app-leaves bg-brandLightGreen'>
+    <div className='bg-app-leaves bg-brandLightGreen pt-10'>
       <div className='container mx-auto p-10'>
-        <h1 className='text-6xl font-bold text-brandGreen text-center'>
+        <h1 className='text-4xl md:text-5xl font-bold text-brandGreen text-center'>
           Create Your Daily Retreat
         </h1>
-        <h3 className='text-center text-3xl mt-2'>
+        <h3 className='text-center text-xl md:text-3xl mt-2'>
           Select from a variety of activities to create your own daily retreat.
         </h3>
 
-        <div className='container mx-auto p-4 mt-20'>
+        <div className='container mx-auto p-4 mt-10 md:mt-20'>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             {cardData.map((card, index) => (
               <div
@@ -171,8 +171,8 @@ const DailyRetreat = () => {
                               setSelectedFeatures((prev) =>
                                 prev.includes(feature.value)
                                   ? prev.filter(
-                                      (item) => item !== feature.value,
-                                    )
+                                    (item) => item !== feature.value,
+                                  )
                                   : [...prev, feature.value],
                               )
                             }

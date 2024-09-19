@@ -60,13 +60,13 @@ const HeroSection = () => {
       {/* Semi-transparent overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center h-full text-center text-app-off-white py-10'>
-        <Image src={logoURL} alt='Whole Human Logo' height={200} width={200} />
+        <Image src={logoURL} alt='Whole Human Logo' height={200} width={200} className="mb-10" />
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
           Whole human is your home away from home.
         </div> */}
-        <div className='flex flex-col items-center mt-10 md:flex-row'>
-          <h1 className='font-semibold text-white text-5xl md:pr-3 md:text-6xl'>
+        <div className='flex flex-col items-center mt-18 md:flex-row'>
+          <h1 className='font-semibold text-white text-5xl md:pr-3 md:text-6xl pb-2 md:mt-0'>
             LIVE
           </h1>
           {/* framer motion to fade in */}
@@ -76,7 +76,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className='text-4xl font-medium md:text-6xl'
+            className='text-5xl font-medium md:text-6xl pb-2 md:mt-0'
           >
             {values[index]}
           </motion.h1>
@@ -128,7 +128,7 @@ const HeroSection = () => {
           </Dialog>
         )}
 
-        <div className='mt-10 flex flex-wrap center'>
+        <div className='mt-10 flex flex-wrap center items-center justify-center'>
           <Button className='text-black bg-white py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
             Start your assessment
           </Button>

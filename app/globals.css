@@ -15,8 +15,6 @@
   background-color: #ebf1e3;
   background-position: center top;
   background-size: contain;
-  padding-top: 10rem;
-  padding-bottom: 3rem;
 }
 
 .footer {
@@ -25,7 +23,6 @@
   color: white;
   background-position: center bottom;
   background-size: contain;
-  padding-bottom: 3rem;
 }
 
 /* :root {

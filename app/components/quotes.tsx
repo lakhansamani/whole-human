@@ -42,9 +42,9 @@ const Quotes = () => {
 
   return (
     <div className='container mx-auto p-10 bg-white py-20'>
-      <div className='mx-10 md:mx-20 bg-brandGreen p-10 text-white h-48 rounded-md'>
+      <div className='mx-0 md:mx-20 bg-brandGreen p-10 text-white h-72 md:h-48 rounded-md'>
         <div className='relative'>
-          <div className='text-center h-24'>
+          <div className='text-center h-48 md:h-24'>
             <p className='text-xl font-semibold mb-4'>
               {`"${quotesList[currentIndex].quote}"`}
             </p>
@@ -59,9 +59,8 @@ const Quotes = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-3 w-3 rounded-full ${
-                  currentIndex === index ? 'bg-white' : 'bg-gray-400'
-                }`}
+                className={`h-3 w-3 rounded-full ${currentIndex === index ? 'bg-white' : 'bg-gray-400'
+                  }`}
               ></button>
             ))}
           </div>
