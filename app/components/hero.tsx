@@ -71,7 +71,7 @@ const HeroSection = () => {
           Bridging the worlds. <br />
           Whole human is your home away from home.
         </div> */}
-        <div className='flex flex-col items-center mt-16 md:flex-row justify-center text-center'>
+        <div className='flex flex-col items-center mt-16 justify-center text-center'>
           <h1
             className={`font-semibold text-white text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
           >
@@ -79,7 +79,7 @@ const HeroSection = () => {
           </h1>
           <h1
             key={`${values[index]}-${Date.now()}`}
-            className={`font-semibold ml-0 mt-5 md:ml-5 md:mt-0 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'text-white' : 'animate-duration-[2000ms]'}`}
+            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'text-white' : 'animate-duration-[2000ms]'}`}
           >
             {values[index]}
           </h1>
