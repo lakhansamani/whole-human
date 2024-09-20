@@ -2,7 +2,6 @@
 
 // components/Hero.js
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   Button,
@@ -23,8 +22,7 @@ const values = [
   'Focused',
   'Free',
   'Full',
-  'Fun',
-  'WHOLE',
+  'Whole',
 ];
 
 const logoURL = '/assets/images/wh-h-logo.svg';
@@ -35,19 +33,20 @@ const HeroSection = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   useEffect(() => {
-    // for every 2 seconds, change the index
-    // if the index is the last value, set the font weight to bold
-    // if the index is the last value, change after 10 seconds
-    const interval = setInterval(() => {
+    const isLastWord = index === values.length - 1;
+    const delay = isLastWord ? 10000 : 2000; // 10 seconds for "Whole", 2 seconds for others
+
+    const timer = setTimeout(() => {
       setIndex((prevIndex) => (prevIndex + 1) % values.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [index]);
 
   function toggleVideoModal() {
     setIsVideoModalOpen(!isVideoModalOpen);
   }
-
+  console.log('HeroSection', index);
   return (
     <div className='relative w-full h-screen overflow-hidden bg-black'>
       <video
@@ -72,21 +71,18 @@ const HeroSection = () => {
           Bridging the worlds. <br />
           Whole human is your home away from home.
         </div> */}
-        <div className='flex flex-col items-center mt-18 md:flex-row'>
-          <h1 className='font-semibold text-white text-5xl md:pr-3 md:text-7xl pb-2 md:mt-0'>
-            LIVE
+        <div className='flex flex-col items-center mt-16 md:flex-row justify-center text-center'>
+          <h1
+            className={`font-semibold text-white text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
+          >
+            Live
           </h1>
-          {/* framer motion to fade in */}
-          <motion.h1
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className={`text-5xl font-medium md:text-7xl pb-2 md:mt-0 ${index === values.length - 1 ? 'font-semibold text-white' : 'font-medium'}`}
+          <h1
+            key={`${values[index]}-${Date.now()}`}
+            className={`font-semibold ml-0 mt-5 md:ml-5 md:mt-0 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'text-white' : 'animate-duration-[2000ms]'}`}
           >
             {values[index]}
-          </motion.h1>
+          </h1>
         </div>
 
         {isVideoModalOpen && (
@@ -132,7 +128,7 @@ const HeroSection = () => {
         )}
 
         <div className='mt-10 flex flex-wrap center items-center justify-center'>
-          <Button className='text-black bg-white py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
+          <Button className='text-black border-2 border-white bg-white py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
             Start your assessment
           </Button>
           <Button

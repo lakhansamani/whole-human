@@ -6,7 +6,7 @@ const About = () => {
     <div className='bg-white container mx-auto p-10'>
       <div className='container mx-auto flex flex-col md:flex-row items-center md:space-x-8 text-center md:text-left'>
         {/* Text Section */}
-        <div className='w-full md:w-1/2 space-y-6'>
+        <div className='w-full md:w-1/2 space-y-6 animate-fade-right'>
           <h1 className='text-4xl md:text-5xl font-bold text-brandGreen leading-tight px-4 md:px-0'>
             Mission & Vision
           </h1>
@@ -36,7 +36,7 @@ const About = () => {
         </div>
 
         {/* Image Section */}
-        <div className='w-full md:w-1/2 mt-8 md:mt-0 md:flex md:justify-end'>
+        <div className='w-full md:w-1/2 mt-8 md:mt-0 md:flex md:justify-end animate-fade-left'>
           <Image
             alt='Ryan'
             src='/assets/images/ryan.webp'
