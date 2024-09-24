@@ -22,7 +22,7 @@ const values = [
   'Focused',
   'Free',
   'Full',
-  'Whole',
+  'WHOLE',
 ];
 
 const logoURL = '/assets/images/wh-h-logo.svg';
@@ -34,7 +34,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const isLastWord = index === values.length - 1;
-    const delay = isLastWord ? 10000 : 2000; // 10 seconds for "Whole", 2 seconds for others
+    const delay = isLastWord ? 5000 : 1000; // 10 seconds for "Whole", 2 seconds for others
 
     const timer = setTimeout(() => {
       setIndex((prevIndex) => (prevIndex + 1) % values.length);
@@ -73,13 +73,13 @@ const HeroSection = () => {
         </div> */}
         <div className='flex flex-col items-center mt-16 justify-center text-center'>
           <h1
-            className={`font-semibold text-white text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
+            className={`font-bold text-white text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
           >
-            Live
+            LIVE
           </h1>
           <h1
             key={`${values[index]}-${Date.now()}`}
-            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'text-white' : 'animate-duration-[2000ms]'}`}
+            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'font-bold text-white' : 'animate-duration-[1000ms]'}`}
           >
             {values[index]}
           </h1>
