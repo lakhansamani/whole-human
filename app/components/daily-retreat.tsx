@@ -34,7 +34,6 @@ const cardData = [
     features: [
       'Creative Movement Tools',
       'Recovery Zone',
-      'Silent Meditation Room',
       'Bio-hack Zone',
       'Hot and Cold Plunges',
       'Outdoor Functional Movement Space',
@@ -140,13 +139,19 @@ const DailyRetreat = () => {
   };
 
   return (
-    <div className='bg-app-leaves bg-brandLightGreen pt-10'>
+    <div
+      className='bg-app-leaves pt-10'
+      style={{
+        backgroundColor: '#f8f3ec',
+      }}
+    >
       <div className='container mx-auto p-10'>
         <h1 className='text-4xl md:text-5xl font-bold text-brandGreen text-center'>
-          Create Your Daily Retreat
+          Built For Community, By Community
         </h1>
         <h3 className='text-center text-xl md:text-3xl mt-2'>
-          Select from a variety of activities to create your own daily retreat.
+          Help us co-create the perfect facility: Vote on your favorite features
+          below!
         </h3>
 
         <div className='container mx-auto p-4 mt-10 md:mt-20'>
@@ -171,8 +176,8 @@ const DailyRetreat = () => {
                               setSelectedFeatures((prev) =>
                                 prev.includes(feature.value)
                                   ? prev.filter(
-                                    (item) => item !== feature.value,
-                                  )
+                                      (item) => item !== feature.value,
+                                    )
                                   : [...prev, feature.value],
                               )
                             }
@@ -260,7 +265,7 @@ const DailyRetreat = () => {
                       />
                     </Field>
                     <Button
-                      className='bg-brandGreen text-white px-6 py-3 rounded-lg mt-5 disabled:bg-brandLightGreen disabled:text-black'
+                      className='border-brandYellow bg-brandYellow px-6 py-3 rounded-lg mt-5 disabled:bg-brandYellow disabled:text-black'
                       type='submit'
                       disabled={isSaving}
                     >
@@ -306,10 +311,10 @@ const DailyRetreat = () => {
 
         <div className='text-center mt-10'>
           <Button
-            className='bg-brandGreen text-white px-6 py-3 rounded-lg text-lg'
+            className='border-brandYellow bg-brandYellow px-6 py-3 rounded-lg text-lg'
             onClick={handleCreateRetreat}
           >
-            Create My Retreat
+            Submit My Vote
           </Button>
         </div>
       </div>

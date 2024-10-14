@@ -106,7 +106,7 @@ const Footer = () => {
               <Button
                 type='submit'
                 disabled={isSubmitting}
-                className='mt-4 px-4 py-2 bg-brandGreen text-white rounded-md focus:ring-2 focus:ring-brandGreen focus:outline-none'
+                className='mt-4 px-4 py-2 border-brandYellow bg-brandYellow rounded-md focus:ring-2 focus:ring-brandYellow focus:outline-none text-black'
               >
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>

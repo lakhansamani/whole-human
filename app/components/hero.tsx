@@ -29,24 +29,79 @@ const logoURL = '/assets/images/wh-h-logo.svg';
 const videoURL = '/assets/videos/forest.mp4';
 
 const HeroSection = () => {
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopIndex, setLoopIndex] = useState(0); // Tracks which word is being typed
+  const [charIndex, setCharIndex] = useState(0); // Tracks the current character position
+  const [isPaused, setIsPaused] = useState(false); // Tracks if there's a pause
+  const typingSpeed = 150;
+  const pauseDuration = 3000; // 5-second pause after last word
 
+  // useEffect(() => {
+  //   const isLastWord = index === values.length - 1;
+  //   const delay = isLastWord ? 5000 : 1000; // 10 seconds for "Whole", 2 seconds for others
+
+  //   const timer = setTimeout(() => {
+  //     setIndex((prevIndex) => (prevIndex + 1) % values.length);
+  //   }, delay);
+
+  //   return () => clearTimeout(timer);
+  // }, [index]);
   useEffect(() => {
-    const isLastWord = index === values.length - 1;
-    const delay = isLastWord ? 5000 : 1000; // 10 seconds for "Whole", 2 seconds for others
+    if (isPaused) {
+      // Wait for the pause duration without deleting the word
+      const pauseTimeout = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true); // Start deleting after the pause
+      }, pauseDuration);
+      return () => clearTimeout(pauseTimeout);
+    }
 
-    const timer = setTimeout(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % values.length);
-    }, delay);
+    let typingTimeout;
 
-    return () => clearTimeout(timer);
-  }, [index]);
+    const handleTyping = () => {
+      const currentWord = values[loopIndex];
+
+      if (isDeleting) {
+        setText(currentWord.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+
+        if (charIndex === 0) {
+          setIsDeleting(false);
+          const nextIndex = loopIndex + 1;
+          if (nextIndex === values.length) {
+            setLoopIndex(0);
+          } else {
+            setLoopIndex(nextIndex);
+          }
+        }
+      } else {
+        setText(currentWord.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+
+        if (charIndex === currentWord.length) {
+          if (loopIndex === values.length - 1) {
+            // If it's the last word, pause before deleting
+            setIsPaused(true);
+          } else {
+            setIsDeleting(true);
+          }
+        }
+      }
+    };
+
+    typingTimeout = setTimeout(handleTyping, typingSpeed);
+
+    // Clear timeout when component unmounts
+    return () => clearTimeout(typingTimeout);
+  }, [charIndex, isDeleting, loopIndex, isPaused]);
 
   function toggleVideoModal() {
     setIsVideoModalOpen(!isVideoModalOpen);
   }
-  console.log('HeroSection', index);
+
   return (
     <div className='relative w-full h-screen overflow-hidden bg-black'>
       <video
@@ -73,15 +128,18 @@ const HeroSection = () => {
         </div> */}
         <div className='flex flex-col items-center mt-16 justify-center text-center'>
           <h1
-            className={`font-bold text-white text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
+            className={`font-bold text-brandYellow text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
           >
             LIVE
           </h1>
           <h1
-            key={`${values[index]}-${Date.now()}`}
-            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary animate-fade-left animate-once ${index === values.length - 1 ? 'font-bold text-white' : 'animate-duration-[1000ms]'}`}
+            key={`${values[loopIndex]}-${Date.now()}`}
+            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary ${loopIndex === values.length - 1 ? 'font-bold text-brandYellow' : ''}`}
+            style={{
+              minHeight: 72,
+            }}
           >
-            {values[index]}
+            {text}
           </h1>
         </div>
 
@@ -117,7 +175,7 @@ const HeroSection = () => {
                 <div className='flex justify-end'>
                   <Button
                     onClick={toggleVideoModal}
-                    className='font-xl bg-brandGreen text-white py-3 px-5 rounded-md'
+                    className='font-xl border-brandYellow bg-brandYellow py-3 px-5 rounded-md'
                   >
                     Close
                   </Button>
@@ -128,7 +186,7 @@ const HeroSection = () => {
         )}
 
         <div className='mt-10 flex flex-wrap center items-center justify-center'>
-          <Button className='text-black border-2 border-white bg-white py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
+          <Button className='text-black border-2 border-brandYellow bg-brandYellow py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
             Start your assessment
           </Button>
           <Button
