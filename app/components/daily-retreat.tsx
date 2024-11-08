@@ -317,6 +317,9 @@ const DailyRetreat = () => {
             Submit My Vote
           </Button>
         </div>
+        <h1 className='text-4xl text-center font-bold my-10'>
+          Coming Soon - Dec 2026
+        </h1>
       </div>
     </div>
   );

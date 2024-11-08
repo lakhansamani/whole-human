@@ -3,6 +3,7 @@
 // components/Hero.js
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Meow_Script } from 'next/font/google';
 import {
   Button,
   Dialog,
@@ -27,6 +28,7 @@ const values = [
 
 const logoURL = '/assets/images/wh-h-logo.svg';
 const videoURL = '/assets/videos/forest.mp4';
+const fancyFont = Meow_Script({ weight: '400', subsets: ['latin'] });
 
 const HeroSection = () => {
   // const [index, setIndex] = useState(0);
@@ -36,7 +38,7 @@ const HeroSection = () => {
   const [loopIndex, setLoopIndex] = useState(0); // Tracks which word is being typed
   const [charIndex, setCharIndex] = useState(0); // Tracks the current character position
   const [isPaused, setIsPaused] = useState(false); // Tracks if there's a pause
-  const typingSpeed = 150;
+  const typingSpeed = 80;
   const pauseDuration = 3000; // 5-second pause after last word
 
   // useEffect(() => {
@@ -134,7 +136,7 @@ const HeroSection = () => {
           </h1>
           <h1
             key={`${values[loopIndex]}-${Date.now()}`}
-            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary ${loopIndex === values.length - 1 ? 'font-bold text-brandYellow' : ''}`}
+            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary ${loopIndex === values.length - 1 ? 'font-bold text-brandYellow' : fancyFont.className}`}
             style={{
               minHeight: 72,
             }}
@@ -160,7 +162,7 @@ const HeroSection = () => {
                   How we can help you?
                 </DialogTitle>
                 <Description>
-                  <iframe
+                  {/* <iframe
                     height='315'
                     src='https://www.youtube.com/embed/E36_MJBoVMM?si=0WuuyYkuGjmQ_Clh'
                     title='YouTube video player'
@@ -169,7 +171,15 @@ const HeroSection = () => {
                     referrerPolicy='strict-origin-when-cross-origin'
                     className='rounded-md md:w-[560px]'
                     allowFullScreen
-                  ></iframe>
+                  ></iframe> */}
+
+                  <div className='min-h-500 min-w-320 py-20'>
+                    <h1 className='font-bold text-6xl text-center'>
+                      Whole Human story
+                      <br />
+                      coming soon...
+                    </h1>
+                  </div>
                 </Description>
 
                 <div className='flex justify-end'>

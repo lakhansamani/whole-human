@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         brandGreen: '#556541',
-        brandYellow: '#F8BE52',
+        brandYellow: '#FFDF2B',
         brandLightGreen: '#EBF1E3',
         brandBackground: '#DACD9',
         // Add other colors based on the palette provided
