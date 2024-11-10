@@ -3,7 +3,7 @@
 // components/Hero.js
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Libre_Baskerville } from 'next/font/google';
+import { Yellowtail } from 'next/font/google';
 import {
   Button,
   Dialog,
@@ -26,11 +26,10 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/wh-logo.jpg';
+const logoURL = '/assets/images/13.png';
 const videoURL = '/assets/videos/hero.mp4';
-const fancyFont = Libre_Baskerville({
+const fancyFont = Yellowtail({
   weight: '400',
-  style: 'italic',
   subsets: ['latin'],
 });
 
@@ -134,13 +133,19 @@ const HeroSection = () => {
       {/* Semi-transparent overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center h-full text-center text-app-off-white py-10'>
-        <Image
-          src={logoURL}
-          alt='Whole Human Logo'
-          height={200}
-          width={200}
-          className='mb-10 rounded-full'
-        />
+        <div
+          className='rounded-lg px-5 py-3'
+          style={{
+            background: '#cfc2a6',
+          }}
+        >
+          <Image
+            src={logoURL}
+            alt='Whole Human Logo'
+            height={200}
+            width={200}
+          />
+        </div>
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
           Whole human is your home away from home.

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Checkbox,
   Field,
@@ -114,25 +114,34 @@ const cardData = [
   },
 ];
 
+const getDefaultFeatures = () => {
+  const selectedFeatures = window.localStorage.getItem(
+    'whole_human_selected_features',
+  );
+  return selectedFeatures ? JSON.parse(selectedFeatures) : [];
+};
+
+const getDefaultEmail = () => {
+  return window.localStorage.getItem('whole_human_email') || '';
+};
+
 const hibiscusFlower = '/assets/images/hibiscus.svg';
 const hibiscusFlowerFlipped = '/assets/images/hibiscus-flower-flipped.png';
 
 const Poll = () => {
-  const [selectedFeatures, setSelectedFeatures] = React.useState<string[]>(
-    window.localStorage.getItem('whole_human_selected_features')
-      ? JSON.parse(
-          window.localStorage.getItem('whole_human_selected_features') || '[]',
-        )
-      : [],
-  );
+  const [selectedFeatures, setSelectedFeatures] = React.useState<string[]>([]);
   const [error, setError] = React.useState<string | null>(null);
   const [isEmailModalOpen, setIsEmailModalOpen] = React.useState(false);
   const [isSaving, setIsSaving] = React.useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = React.useState(false);
   const [isLinkCopied, setIsLinkCopied] = React.useState(false);
-  const [email, setEmail] = React.useState(
-    window.localStorage.getItem('whole_human_email') || '',
-  );
+  const [email, setEmail] = React.useState('');
+
+  useEffect(() => {
+    setSelectedFeatures(getDefaultFeatures());
+    setEmail(getDefaultEmail());
+  }, []);
+
   const handleCreateRetreat = () => {
     // Validate selected features
     if (selectedFeatures.length === 0) {
@@ -183,7 +192,7 @@ const Poll = () => {
       setIsSuccessModalOpen(true);
     }
   };
-  const flowerCount = window.innerWidth < 640 ? 10 : 15; // Adjust based on needs
+  // const flowerCount = window.innerWidth < 640 ? 10 : 15; // Adjust based on needs
   return (
     <div
       className='bg-app-leaves pt-10 relative'
