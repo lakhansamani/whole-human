@@ -13,7 +13,6 @@ import {
   Button,
 } from '@headlessui/react';
 import { CheckIcon, XCircleIcon } from '@heroicons/react/16/solid';
-import Image from 'next/image';
 
 const getFeatureValue = (feature: string, category: string) =>
   feature
@@ -120,9 +119,9 @@ const hibiscusFlowerFlipped = '/assets/images/hibiscus-flower-flipped.png';
 
 const Poll = () => {
   const [selectedFeatures, setSelectedFeatures] = React.useState<string[]>(
-    localStorage.getItem('whole_human_selected_features')
+    window.localStorage.getItem('whole_human_selected_features')
       ? JSON.parse(
-          localStorage.getItem('whole_human_selected_features') || '[]',
+          window.localStorage.getItem('whole_human_selected_features') || '[]',
         )
       : [],
   );
@@ -132,7 +131,7 @@ const Poll = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = React.useState(false);
   const [isLinkCopied, setIsLinkCopied] = React.useState(false);
   const [email, setEmail] = React.useState(
-    localStorage.getItem('whole_human_email') || '',
+    window.localStorage.getItem('whole_human_email') || '',
   );
   const handleCreateRetreat = () => {
     // Validate selected features
@@ -159,11 +158,11 @@ const Poll = () => {
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
-    localStorage.setItem(
+    window.localStorage.setItem(
       'whole_human_selected_features',
       JSON.stringify(selectedFeatures),
     );
-    localStorage.setItem('whole_human_email', email);
+    window.localStorage.setItem('whole_human_email', email);
     console.log('Saving selected features:', selectedFeatures, email);
     // await for 1 second and then show success modal
     try {
