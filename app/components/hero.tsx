@@ -3,7 +3,7 @@
 // components/Hero.js
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Meow_Script } from 'next/font/google';
+import { Libre_Baskerville } from 'next/font/google';
 import {
   Button,
   Dialog,
@@ -26,82 +26,99 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/wh-h-logo.svg';
-const videoURL = '/assets/videos/forest.mp4';
-const fancyFont = Meow_Script({ weight: '400', subsets: ['latin'] });
+const logoURL = '/assets/images/wh-logo.jpg';
+const videoURL = '/assets/videos/hero.mp4';
+const fancyFont = Libre_Baskerville({
+  weight: '400',
+  style: 'italic',
+  subsets: ['latin'],
+});
 
 const HeroSection = () => {
   // const [index, setIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopIndex, setLoopIndex] = useState(0); // Tracks which word is being typed
-  const [charIndex, setCharIndex] = useState(0); // Tracks the current character position
-  const [isPaused, setIsPaused] = useState(false); // Tracks if there's a pause
-  const typingSpeed = 80;
-  const pauseDuration = 3000; // 5-second pause after last word
+  const [isAssessmentModalOpen, setIsAssessmentModalOpen] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const lastIndex = values.length - 1;
 
-  // useEffect(() => {
-  //   const isLastWord = index === values.length - 1;
-  //   const delay = isLastWord ? 5000 : 1000; // 10 seconds for "Whole", 2 seconds for others
-
-  //   const timer = setTimeout(() => {
-  //     setIndex((prevIndex) => (prevIndex + 1) % values.length);
-  //   }, delay);
-
-  //   return () => clearTimeout(timer);
-  // }, [index]);
+  // Fade in animation
   useEffect(() => {
-    if (isPaused) {
-      // Wait for the pause duration without deleting the word
-      const pauseTimeout = setTimeout(() => {
-        setIsPaused(false);
-        setIsDeleting(true); // Start deleting after the pause
-      }, pauseDuration);
-      return () => clearTimeout(pauseTimeout);
-    }
+    const fadeDuration = currentWordIndex === lastIndex ? 3500 : 1500;
 
-    let typingTimeout;
+    const timeout = setTimeout(() => {
+      setCurrentWordIndex((prevIndex) =>
+        prevIndex === lastIndex ? 0 : prevIndex + 1,
+      );
+    }, fadeDuration);
 
-    const handleTyping = () => {
-      const currentWord = values[loopIndex];
+    return () => clearTimeout(timeout);
+  }, [currentWordIndex]);
 
-      if (isDeleting) {
-        setText(currentWord.substring(0, charIndex - 1));
-        setCharIndex((prev) => prev - 1);
+  // states used for typing animation
+  // const [text, setText] = useState('');
+  // const [isDeleting, setIsDeleting] = useState(false);
+  // const [loopIndex, setLoopIndex] = useState(0); // Tracks which word is being typed
+  // const [charIndex, setCharIndex] = useState(0); // Tracks the current character position
+  // const [isPaused, setIsPaused] = useState(false); // Tracks if there's a pause
+  // const typingSpeed = 80;
+  // const pauseDuration = 3000; // 5-second pause after last word
 
-        if (charIndex === 0) {
-          setIsDeleting(false);
-          const nextIndex = loopIndex + 1;
-          if (nextIndex === values.length) {
-            setLoopIndex(0);
-          } else {
-            setLoopIndex(nextIndex);
-          }
-        }
-      } else {
-        setText(currentWord.substring(0, charIndex + 1));
-        setCharIndex((prev) => prev + 1);
+  // Typing animation
+  // useEffect(() => {
+  //   if (isPaused) {
+  //     // Wait for the pause duration without deleting the word
+  //     const pauseTimeout = setTimeout(() => {
+  //       setIsPaused(false);
+  //       setIsDeleting(true); // Start deleting after the pause
+  //     }, pauseDuration);
+  //     return () => clearTimeout(pauseTimeout);
+  //   }
 
-        if (charIndex === currentWord.length) {
-          if (loopIndex === values.length - 1) {
-            // If it's the last word, pause before deleting
-            setIsPaused(true);
-          } else {
-            setIsDeleting(true);
-          }
-        }
-      }
-    };
+  //   let typingTimeout;
 
-    typingTimeout = setTimeout(handleTyping, typingSpeed);
+  //   const handleTyping = () => {
+  //     const currentWord = values[loopIndex];
 
-    // Clear timeout when component unmounts
-    return () => clearTimeout(typingTimeout);
-  }, [charIndex, isDeleting, loopIndex, isPaused]);
+  //     if (isDeleting) {
+  //       setText(currentWord.substring(0, charIndex - 1));
+  //       setCharIndex((prev) => prev - 1);
+
+  //       if (charIndex === 0) {
+  //         setIsDeleting(false);
+  //         const nextIndex = loopIndex + 1;
+  //         if (nextIndex === values.length) {
+  //           setLoopIndex(0);
+  //         } else {
+  //           setLoopIndex(nextIndex);
+  //         }
+  //       }
+  //     } else {
+  //       setText(currentWord.substring(0, charIndex + 1));
+  //       setCharIndex((prev) => prev + 1);
+
+  //       if (charIndex === currentWord.length) {
+  //         if (loopIndex === values.length - 1) {
+  //           // If it's the last word, pause before deleting
+  //           setIsPaused(true);
+  //         } else {
+  //           setIsDeleting(true);
+  //         }
+  //       }
+  //     }
+  //   };
+
+  //   typingTimeout = setTimeout(handleTyping, typingSpeed);
+
+  //   // Clear timeout when component unmounts
+  //   return () => clearTimeout(typingTimeout);
+  // }, [charIndex, isDeleting, loopIndex, isPaused]);
 
   function toggleVideoModal() {
     setIsVideoModalOpen(!isVideoModalOpen);
+  }
+
+  function toggleAssessmentModal() {
+    setIsAssessmentModalOpen(!isAssessmentModalOpen);
   }
 
   return (
@@ -122,7 +139,7 @@ const HeroSection = () => {
           alt='Whole Human Logo'
           height={200}
           width={200}
-          className='mb-10'
+          className='mb-10 rounded-full'
         />
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
@@ -135,13 +152,13 @@ const HeroSection = () => {
             LIVE
           </h1>
           <h1
-            key={`${values[loopIndex]}-${Date.now()}`}
-            className={`font-semibold mt-5 text-5xl md:text-7xl text-primary ${loopIndex === values.length - 1 ? 'font-bold text-brandYellow' : fancyFont.className}`}
+            key={`${values[currentWordIndex]}-${Date.now()}`}
+            className={`animate-fade duration-150 font-semibold mt-5 text-5xl md:text-7xl text-primary ${lastIndex === currentWordIndex ? 'font-bold text-brandYellow' : `${fancyFont.className} italic`}`}
             style={{
               minHeight: 72,
             }}
           >
-            {text}
+            {values[currentWordIndex]}
           </h1>
         </div>
 
@@ -195,8 +212,50 @@ const HeroSection = () => {
           </Dialog>
         )}
 
+        {isAssessmentModalOpen && (
+          <Dialog
+            open={isAssessmentModalOpen}
+            onClose={toggleAssessmentModal}
+            className='relative z-50'
+          >
+            {/* The backdrop, rendered as a fixed sibling to the panel container */}
+            <DialogBackdrop className='fixed inset-0 bg-black/30' />
+
+            {/* Full-screen container to center the panel */}
+            <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+              {/* The actual dialog panel  */}
+              <DialogPanel className='space-y-4 bg-slate-100 p-5 rounded-md'>
+                <DialogTitle className='font-semibold text-2xl'>
+                  Your Wellbeing Assessment
+                </DialogTitle>
+                <Description>
+                  <div className='min-h-500 min-w-320 py-20'>
+                    <h1 className='font-bold text-6xl text-center'>
+                      Whole Human assessment
+                      <br />
+                      coming soon...
+                    </h1>
+                  </div>
+                </Description>
+
+                <div className='flex justify-end'>
+                  <Button
+                    onClick={toggleAssessmentModal}
+                    className='font-xl border-brandYellow bg-brandYellow py-3 px-5 rounded-md'
+                  >
+                    Close
+                  </Button>
+                </div>
+              </DialogPanel>
+            </div>
+          </Dialog>
+        )}
+
         <div className='mt-10 flex flex-wrap center items-center justify-center'>
-          <Button className='text-black border-2 border-brandYellow bg-brandYellow py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'>
+          <Button
+            className='text-black border-2 border-brandYellow bg-brandYellow py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'
+            onClick={toggleAssessmentModal}
+          >
             Start your assessment
           </Button>
           <Button

@@ -11,14 +11,14 @@
 }
 
 .bg-app-leaves {
-  background: url(/assets/images/leaves.svg) no-repeat;
+  background: url(/assets/images/palm-top.svg) no-repeat;
   background-color: #ebf1e3;
   background-position: center top;
   background-size: contain;
 }
 
 .footer {
-  background: url(/assets/images/footer-bg.svg) no-repeat;
+  background: url(/assets/images/palm-bottom.svg) no-repeat;
   background-color: #192314;
   color: white;
   background-position: center bottom;

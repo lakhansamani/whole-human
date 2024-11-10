@@ -20,6 +20,16 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      keyframes: {
+        fall: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '100%': { transform: 'translateY(100vh)', opacity: '1' }, // Full div height
+        },
+      },
+      animation: {
+        fall: 'fall 6s linear',
+      },
     },
   },
   plugins: [require('tailwindcss-animated')],

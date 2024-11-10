@@ -45,7 +45,7 @@ const Quotes = () => {
       <div className='mx-0 md:mx-20 bg-brandGreen p-10 text-white h-72 md:h-48 rounded-md'>
         <div className='relative'>
           <div
-            className='text-center h-48 md:h-24 animate-once animate-fade-down animate-duration-[5000ms]'
+            className='text-center h-48 md:h-24 animate-once animate-fade animate-duration-[1000ms]'
             key={`${currentIndex}-${Date.now()}`}
           >
             <p className='text-xl font-semibold mb-4'>
