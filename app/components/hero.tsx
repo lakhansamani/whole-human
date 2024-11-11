@@ -3,7 +3,7 @@
 // components/Hero.js
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Yellowtail } from 'next/font/google';
+import { Bebas_Neue } from 'next/font/google';
 import {
   Button,
   Dialog,
@@ -26,9 +26,10 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/13.png';
+const logoURL = '/assets/images/wh-logo-y.png';
 const videoURL = '/assets/videos/hero.mp4';
-const fancyFont = Yellowtail({
+
+const BebasFont = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
 });
@@ -133,32 +134,20 @@ const HeroSection = () => {
       {/* Semi-transparent overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center h-full text-center text-app-off-white py-10'>
-        <div
-          className='rounded-lg px-5 py-3'
-          style={{
-            background: '#cfc2a6',
-          }}
-        >
-          <Image
-            src={logoURL}
-            alt='Whole Human Logo'
-            height={200}
-            width={200}
-          />
-        </div>
+        <Image src={logoURL} alt='Whole Human Logo' height={300} width={300} />
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
           Whole human is your home away from home.
         </div> */}
-        <div className='flex flex-col items-center mt-16 justify-center text-center'>
+        <div className='flex flex-col items-center mt-5 justify-center text-center'>
           <h1
-            className={`font-bold text-brandYellow text-5xl md:text-7xl pb-2 md:mt-0 animate-fade-right animate-once`}
+            className={`font-bold text-brandYellow text-5xl md:text-8xl pb-2 md:mt-0 animate-fade-right animate-once ${BebasFont.className} font-serif`}
           >
             LIVE
           </h1>
           <h1
             key={`${values[currentWordIndex]}-${Date.now()}`}
-            className={`animate-fade duration-150 font-semibold mt-5 text-5xl md:text-7xl text-primary ${lastIndex === currentWordIndex ? 'font-bold text-brandYellow' : `${fancyFont.className} italic`}`}
+            className={`animate-fade duration-150 font-semibold text-5xl md:text-8xl text-primary ${lastIndex === currentWordIndex ? `font-bold text-brandYellow ${BebasFont.className}` : `${BebasFont.className}`}`}
             style={{
               minHeight: 72,
             }}

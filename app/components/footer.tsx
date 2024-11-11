@@ -145,7 +145,7 @@ const Footer = () => {
               height={30}
               width={30}
             />
-            <a href='mailto:info@wholehuman.club'>info@wholehuman.club</a>
+            <a href='mailto:info@wholehuman.club'>info@wholehuman.life</a>
           </div>
           <div className='flex items-center space-x-2'>
             <Image
