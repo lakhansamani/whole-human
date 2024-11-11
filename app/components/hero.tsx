@@ -26,7 +26,7 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/wh-logo-y.png';
+const logoURL = '/assets/images/wh-logo-g.png';
 const videoURL = '/assets/videos/hero.mp4';
 
 const BebasFont = Bebas_Neue({
@@ -134,12 +134,18 @@ const HeroSection = () => {
       {/* Semi-transparent overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center h-full text-center text-app-off-white py-10'>
-        <Image src={logoURL} alt='Whole Human Logo' height={300} width={300} />
+        <Image
+          src={logoURL}
+          alt='Whole Human Logo'
+          height={300}
+          width={300}
+          className='mt-5'
+        />
         {/* <div className='mt-10 text-3xl px-10 md:text-4xl'>
           Bridging the worlds. <br />
           Whole human is your home away from home.
         </div> */}
-        <div className='flex flex-col items-center mt-5 justify-center text-center'>
+        <div className='flex flex-col items-center mt-16 justify-center text-center'>
           <h1
             className={`font-bold text-brandYellow text-5xl md:text-8xl pb-2 md:mt-0 animate-fade-right animate-once ${BebasFont.className} font-serif`}
           >
