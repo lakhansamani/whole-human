@@ -26,7 +26,7 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/wh-logo-g.png';
+const logoURL = '/assets/images/wh-logo-y.png';
 const videoURL = '/assets/videos/hero.mp4';
 
 const BebasFont = Bebas_Neue({
@@ -147,11 +147,16 @@ const HeroSection = () => {
         </div> */}
         <div className='flex flex-col items-center mt-16 justify-center text-center'>
           <h1
-            className={`font-bold text-brandYellow text-5xl md:text-8xl pb-2 md:mt-0 animate-fade-right animate-once ${BebasFont.className} font-serif`}
+            className={`font-bold  text-5xl md:text-8xl pb-2 md:mt-0 animate-fade-right animate-once ${BebasFont.className} font-serif`}
           >
-            LIVE
+            <span className='text-brandYellow'>LIVE</span>
+            <span
+              className={`animate-fade duration-150 ml-0 md:ml-3 ${lastIndex === currentWordIndex ? `font-bold text-brandYellow ${BebasFont.className}` : `${BebasFont.className}`}`}
+            >
+              {values[currentWordIndex]}
+            </span>
           </h1>
-          <h1
+          {/* <h1
             key={`${values[currentWordIndex]}-${Date.now()}`}
             className={`animate-fade duration-150 font-semibold text-5xl md:text-8xl text-primary ${lastIndex === currentWordIndex ? `font-bold text-brandYellow ${BebasFont.className}` : `${BebasFont.className}`}`}
             style={{
@@ -159,7 +164,7 @@ const HeroSection = () => {
             }}
           >
             {values[currentWordIndex]}
-          </h1>
+          </h1> */}
         </div>
 
         {isVideoModalOpen && (
