@@ -13,6 +13,7 @@ import {
   Button,
 } from '@headlessui/react';
 import { CheckIcon, XCircleIcon } from '@heroicons/react/16/solid';
+import { get } from 'http';
 
 const getFeatureValue = (feature: string, category: string) =>
   feature
@@ -138,8 +139,32 @@ const Poll = () => {
   const [email, setEmail] = React.useState('');
 
   useEffect(() => {
-    setSelectedFeatures(getDefaultFeatures());
-    setEmail(getDefaultEmail());
+    async function fetchPoll() {
+      // Get the email from localStorage (client-side only)
+      const email = getDefaultEmail();
+
+      if (email) {
+        try {
+          // Call the API with the email as a query parameter
+          const response = await fetch(
+            `/api/polls?email=${encodeURIComponent(email)}`,
+          );
+
+          if (!response.ok) {
+            // Handle non-200 responses
+            return;
+          }
+
+          // Parse and set the poll data
+          const data = await response.json();
+          setSelectedFeatures(data.selectedFeatures || getDefaultFeatures());
+          setEmail(data.email || email);
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      }
+    }
+    fetchPoll();
   }, []);
 
   const handleCreateRetreat = () => {

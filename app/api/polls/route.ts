@@ -37,3 +37,32 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const email = searchParams.get('email');
+
+  if (!email) {
+    return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+  }
+
+  try {
+    const db = await getDatabase('whole-human');
+    const collection = db.collection('polls');
+
+    // Find one poll associated with the given email
+    const poll = await collection.findOne({ email });
+
+    if (!poll) {
+      return NextResponse.json({ error: 'Poll not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ poll });
+  } catch (error) {
+    console.error('Error fetching poll:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch poll' },
+      { status: 500 },
+    );
+  }
+}
