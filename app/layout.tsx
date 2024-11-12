@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <title>Whole Human - Holistic Wellbeing & Growth</title>
+        <title>Whole Human - Wellness Hub</title>
         <meta
           name='description'
           content='Whole Human is dedicated to promoting holistic wellbeing, sustainability, inclusion, equality, and personal growth. Join us in our journey towards a better future.'
@@ -24,10 +24,7 @@ export default function RootLayout({
         <meta name='author' content='Whole Human' />
         <meta name='robots' content='index, follow' />
         <link rel='icon' href='/assets/images/favicon.png' sizes='any' />
-        <meta
-          property='og:title'
-          content='Whole Human - Holistic Wellbeing & Growth'
-        />
+        <meta property='og:title' content='Whole Human - Wellness Hub' />
         <meta
           property='og:description'
           content='Promoting holistic wellbeing, sustainability, inclusion, equality, and personal growth.'
@@ -38,10 +35,7 @@ export default function RootLayout({
 
         {/* Twitter */}
         <meta name='twitter:card' content='summary_large_image' />
-        <meta
-          name='twitter:title'
-          content='Whole Human - Holistic Wellbeing & Growth'
-        />
+        <meta name='twitter:title' content='Whole Human - Wellness Hub' />
         <meta
           name='twitter:description'
           content='Join us in promoting holistic wellbeing, sustainability, inclusion, equality, and personal growth.'
