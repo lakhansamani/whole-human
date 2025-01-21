@@ -10,6 +10,9 @@ import {
   Button,
 } from '@headlessui/react';
 import { XCircleIcon } from '@heroicons/react/16/solid';
+import { FaInstagram, FaYoutube, FaWhatsapp, FaSpotify } from 'react-icons/fa';
+
+const logoURL = '/assets/images/whole-human-logo.png';
 
 const Footer = () => {
   const [email, setEmail] = React.useState('');
@@ -33,7 +36,13 @@ const Footer = () => {
         <div className='flex flex-col md:flex-row'>
           {/* Left Column */}
           <div className='w-full md:w-4/12 mb-6 md:mb-0'>
-            <h1 className='text-3xl font-bold'>Whole Human</h1>
+            {/* <h1 className='text-3xl font-bold'>Whole Human</h1> */}
+            <Image
+              src={logoURL}
+              alt='Whole Human Logo'
+              height={150}
+              width={150}
+            />
             <p className='mt-4'>
               We are the kind of close friend you can feel comfortable being
               vulnerable with one moment, and then will hype you up to do
@@ -44,42 +53,26 @@ const Footer = () => {
             <ul className='flex space-x-4 mt-4'>
               <li>
                 <a href='#'>
-                  <Image
-                    src='/assets/images/facebook.svg'
-                    alt='Facebook'
-                    height={30}
-                    width={30}
-                  />
+                  <FaInstagram size={30} className='text-brandYellow' />
+                </a>
+              </li>
+              <li>
+                <a
+                  href='https://chat.whatsapp.com/Ly284FKRu442BHlAaX3XWz'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <FaWhatsapp size={30} className='text-brandYellow' />
                 </a>
               </li>
               <li>
                 <a href='#'>
-                  <Image
-                    src='/assets/images/insta.svg'
-                    alt='Instagram'
-                    height={30}
-                    width={30}
-                  />
+                  <FaYoutube size={30} className='text-brandYellow' />
                 </a>
               </li>
               <li>
                 <a href='#'>
-                  <Image
-                    src='/assets/images/linkedin.svg'
-                    alt='LinkedIn'
-                    height={30}
-                    width={30}
-                  />
-                </a>
-              </li>
-              <li>
-                <a href='#'>
-                  <Image
-                    src='/assets/images/youtube.svg'
-                    alt='YouTube'
-                    height={30}
-                    width={30}
-                  />
+                  <FaSpotify size={30} className='text-brandYellow' />
                 </a>
               </li>
             </ul>

@@ -5,7 +5,7 @@ const Stats = () => {
   return (
     <div className='bg-white container mx-auto py-20'>
       <h1 className='text-4xl md:text-5xl font-bold text-brandGreen leading-tight px-4 md:px-0 mb-10 text-center'>
-        Whole Human Statistics
+        Global (un)wellness stats
       </h1>
       <div className='mx-0 md:mx-20 bg-brandGreen p-10 text-white rounded-md'>
         {/* Stats Section 5 cards with text-brandYellow as background */}

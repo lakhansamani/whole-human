@@ -12,6 +12,7 @@ import {
   DialogBackdrop,
   Description,
 } from '@headlessui/react';
+import { FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 const values = [
   'Mindful',
@@ -26,7 +27,7 @@ const values = [
   'WHOLE',
 ];
 
-const logoURL = '/assets/images/wh-logo-y.png';
+const logoURL = '/assets/images/whole-human-logo.png';
 const videoURL = '/assets/videos/hero.mp4';
 
 const BebasFont = Bebas_Neue({
@@ -262,16 +263,24 @@ const HeroSection = () => {
         )}
 
         <div className='my-5 flex flex-wrap center items-center justify-center'>
-          <Button
-            className='text-black border-2 border-brandYellow bg-brandYellow py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'
-            onClick={toggleAssessmentModal}
+          <a
+            href='https://chat.whatsapp.com/Ly284FKRu442BHlAaX3XWz'
+            target='_blank'
+            rel='noreferrer'
           >
-            Start your assessment
-          </Button>
+            <Button
+              className='flex items-center justify-center text-black border-2 border-brandYellow bg-brandYellow py-3 px-4 rounded-md m-3 text-xl hover:bg-app-off-white'
+              // onClick={toggleAssessmentModal}
+            >
+              <FaWhatsapp className='mr-2' />
+              Join WhatsApp Group
+            </Button>
+          </a>
           <Button
-            className='text-white border-2 py-3 px-4 rounded-md m-3 text-xl hover:text-app-off-white'
+            className='flex items-center justify-center text-white border-2 py-3 px-4 rounded-md m-3 text-xl hover:text-app-off-white'
             onClick={toggleVideoModal}
           >
+            <FaYoutube className='mr-2' />
             Watch Video
           </Button>
         </div>

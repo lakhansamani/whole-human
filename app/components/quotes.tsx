@@ -4,22 +4,22 @@ import React, { useState, useEffect } from 'react';
 
 const quotesList = [
   {
-    quote: `Mental health is not a destination, but a process. It's about how you drive, not where you're going.`,
-    author: 'Noam Shpancer',
+    quote: `THE POWER OF COMMUNITY TO CREATE HEALTH IS FAR GREATER THAN ANY PHYSICIAN, CLINIC, OR HOSPITAL`,
+    author: 'Mark Hyman',
   },
-  {
-    quote: `Happiness is the highest form of health.`,
-    author: 'Dalai Lama',
-  },
-  {
-    quote:
-      'To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear.',
-    author: 'Buddha',
-  },
-  {
-    quote: 'Take care of your body. It’s the only place you have to live.',
-    author: 'Jim Rohn',
-  },
+  // {
+  //   quote: `Happiness is the highest form of health.`,
+  //   author: 'Dalai Lama',
+  // },
+  // {
+  //   quote:
+  //     'To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear.',
+  //   author: 'Buddha',
+  // },
+  // {
+  //   quote: 'Take care of your body. It’s the only place you have to live.',
+  //   author: 'Jim Rohn',
+  // },
 ];
 
 const Quotes = () => {

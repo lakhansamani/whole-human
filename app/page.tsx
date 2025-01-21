@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <Story />
       <Stats />
+      <Story />
       {/* <About /> */}
-      <Poll />
+      {/* <Poll /> */}
       <Quotes />
     </>
   );
